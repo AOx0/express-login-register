@@ -14,20 +14,20 @@ app.get("/", (req, res) => {
 
 app.get("/auth/register/:nombre/:correo/:apellido/:contrasenna", (req, res) => {
 
-  exito = true
+  let success = true
 
-  for (i=0; i<USERS.length; i++) {
-    if (req.params.correo == USERS[i].correo) {
+  for (let i=0; i<USERS.length; i++) {
+    if (req.params.correo === USERS[i].correo) {
       res
-        .send("Registro fallido")
+.send("Registro fallido")
         .status(400)
 
-      exito = false
+      success = false
       return
     }
   }
 
-  if (exito) {
+  if (success) {
     USERS.push({
       nombre: req.params.nombre,
       correo: req.params.correo,
